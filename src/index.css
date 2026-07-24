@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Self-hosted Inter (variable font, weight axis 100–900), preloaded in
+ * index.html to prevent layout shift.  */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/InterVariable.woff2") format("woff2");
+}
+
+/*
+ * Metric-matched fallback so swapping in Inter causes zero layout shift,
+ * even on a hard refresh. Values are the same ones next/font generates
+ * for Inter.
+ */
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial");
+  ascent-override: 90.44%;
+  descent-override: 22.52%;
+  line-gap-override: 0%;
+  size-adjust: 107.12%;
+}
