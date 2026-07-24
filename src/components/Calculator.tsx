@@ -264,7 +264,7 @@ export function Calculator() {
                     );
                     return (
                       <tr key={day.label}>
-                        <td className={"py-2.5 text-zinc-600" + border}>
+                        <td className={"py-2.5 text-lg text-zinc-700" + border}>
                           {day.label}
                         </td>
                         <td className={numCell}>
