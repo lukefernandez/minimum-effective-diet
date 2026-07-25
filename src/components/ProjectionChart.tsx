@@ -84,76 +84,69 @@ export function ProjectionChart({ projections, units, showWindow }: Props) {
   }
 
   return (
-    <div className="mx-auto flex max-w-sm items-center justify-center text-lg xs:max-w-md sm:max-w-[52rem]">
-      <div className="h-[400px] w-full sm:mr-[8%] sm:h-[480px]">
-        <ResponsiveContainer width="100%" height="100%">
-          <ComposedChart
-            data={chartData}
-            margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis
-              dataKey="week"
-              label={{ value: "Week", position: "bottom" }}
-            />
-            <YAxis
-              domain={[
-                Math.floor(graphMinWeight - yAxisPadding),
-                Math.ceil(graphMaxWeight + yAxisPadding),
-              ]}
-              label={{
-                value: `Weight in ${units}`,
-                angle: -90,
-                position: "left",
-                offset: -1,
-                style: { textAnchor: "middle" },
-              }}
-              allowDecimals={false}
-            />
-            <Tooltip content={<CustomTooltip />} animationDuration={200} />
-            {showWindow && (
-              <Area
-                dataKey="window"
-                stroke="none"
-                fill="#16c24a"
-                legendType="none"
-                fillOpacity={0.7}
-                isAnimationActive={animate}
-              />
-            )}
+    <ResponsiveContainer width="100%" height="100%">
+      <ComposedChart
+        data={chartData}
+        margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="week" label={{ value: "Week", position: "bottom" }} />
+        <YAxis
+          domain={[
+            Math.floor(graphMinWeight - yAxisPadding),
+            Math.ceil(graphMaxWeight + yAxisPadding),
+          ]}
+          label={{
+            value: `Weight in ${units}`,
+            angle: -90,
+            position: "left",
+            offset: -1,
+            style: { textAnchor: "middle" },
+          }}
+          allowDecimals={false}
+        />
+        <Tooltip content={<CustomTooltip />} animationDuration={200} />
+        {showWindow && (
+          <Area
+            dataKey="window"
+            stroke="none"
+            fill="#16c24a"
+            legendType="none"
+            fillOpacity={0.7}
+            isAnimationActive={animate}
+          />
+        )}
+        <Line
+          type="monotone"
+          name="Target Weight"
+          dataKey="weight"
+          strokeWidth={2}
+          stroke="#18181b"
+          isAnimationActive={animate}
+        />
+        {showWindow && (
+          <>
             <Line
               type="monotone"
-              name="Target Weight"
-              dataKey="weight"
+              dot={false}
+              dataKey="minWeight"
+              name="Min Weight"
               strokeWidth={2}
               stroke="#18181b"
               isAnimationActive={animate}
             />
-            {showWindow && (
-              <>
-                <Line
-                  type="monotone"
-                  dot={false}
-                  dataKey="minWeight"
-                  name="Min Weight"
-                  strokeWidth={2}
-                  stroke="#18181b"
-                  isAnimationActive={animate}
-                />
-                <Line
-                  type="monotone"
-                  dot={false}
-                  name="Max Weight"
-                  dataKey="maxWeight"
-                  strokeWidth={2}
-                  stroke="#18181b"
-                  isAnimationActive={animate}
-                />
-              </>
-            )}
-          </ComposedChart>
-        </ResponsiveContainer>
-      </div>
-    </div>
+            <Line
+              type="monotone"
+              dot={false}
+              name="Max Weight"
+              dataKey="maxWeight"
+              strokeWidth={2}
+              stroke="#18181b"
+              isAnimationActive={animate}
+            />
+          </>
+        )}
+      </ComposedChart>
+    </ResponsiveContainer>
   );
 }

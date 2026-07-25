@@ -189,11 +189,15 @@ export function Calculator() {
           Following this plan, my weight will roughly trend like this, with each
           data point representing my average weight during that week:{" "}
         </p>
-        <ProjectionChart
-          projections={plan?.projections ?? []}
-          units="pounds"
-          showWindow={false}
-        />
+        <div className="mx-auto flex max-w-sm items-center justify-center xs:max-w-md sm:max-w-[52rem]">
+          <div className="h-[400px] w-full sm:mr-[8%] sm:h-[480px]">
+            <ProjectionChart
+              projections={plan?.projections ?? []}
+              units="pounds"
+              showWindow={false}
+            />
+          </div>
+        </div>
         <p className="mx-auto max-w-xs sm:max-w-xl">
           At the end of the {calculatorState.weeks} weeks, my results will look
           something like this:
@@ -297,11 +301,15 @@ export function Calculator() {
           So each week, I will calculate my average weight for the week and make
           sure it is in what I call the "green zone", shown below:
         </p>
-        <ProjectionChart
-          projections={plan?.projections ?? []}
-          units="pounds"
-          showWindow={true}
-        />
+        <div className="mx-auto flex max-w-sm items-center justify-center xs:max-w-md sm:max-w-[52rem]">
+          <div className="h-[400px] w-full sm:mr-[8%] sm:h-[480px]">
+            <ProjectionChart
+              projections={plan?.projections ?? []}
+              units="pounds"
+              showWindow={true}
+            />
+          </div>
+        </div>
         <p className="mx-auto max-w-xs sm:max-w-xl">
           If I keep an eye on that "green zone" and adjust the calorie
           recommendations as needed to stay within it, I will reach my goal and
