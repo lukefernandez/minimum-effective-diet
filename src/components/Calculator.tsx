@@ -57,7 +57,7 @@ export function Calculator() {
   const plan = useMemo(() => computePlan(calculatorState), [calculatorState]);
 
   return (
-    <div className="mt-6 text-lg leading-[3.5rem] sm:mt-8">
+    <div className="mt-5 text-lg leading-[3.5rem]">
       <form onSubmit={(event) => event.preventDefault()}>
         <div className="mx-auto max-w-xs xs:max-w-md sm:max-w-xl">
           <p>
@@ -183,9 +183,9 @@ export function Calculator() {
         </div>
       </form>
 
-      <hr className="mx-auto mt-6 max-w-xs sm:max-w-xl" />
-      <div className={plan !== null ? "visible mt-6 space-y-8" : "hidden"}>
-        <div>
+      <hr className="mx-auto mt-4 max-w-xs sm:max-w-xl" />
+      <div className={plan !== null ? "visible" : "hidden"}>
+        <div className="mt-4">
           <p className="mx-auto max-w-xs sm:max-w-xl">
             Following this plan, my weight will roughly trend like this, with
             each data point representing my average weight during that week:
@@ -200,7 +200,7 @@ export function Calculator() {
             </div>
           </div>
         </div>
-        <div>
+        <div className="mt-6">
           <p className="mx-auto max-w-xs sm:max-w-xl">
             At the end of the {calculatorState.weeks} weeks, my results will
             look something like this:
@@ -241,7 +241,7 @@ export function Calculator() {
             </div>
           </div>
         </div>
-        <div>
+        <div className="mt-6">
           <p className="mx-auto max-w-xs sm:max-w-xl">
             To stay on track with my targeted weight{" "}
             {directionConfig.resultText} and achieve the best physique, I will
@@ -302,7 +302,7 @@ export function Calculator() {
             </table>
           </div>
         </div>
-        <div>
+        <div className="mt-4">
           <p className="mx-auto max-w-xs sm:max-w-xl">
             But even if I stick to this, my progress will probably not look like
             a perfect straight line. There are just too many variables at play.
@@ -312,7 +312,7 @@ export function Calculator() {
             dieting too slow can diminish the positive benefits.
           </p>
         </div>
-        <div>
+        <div className="mt-4">
           <p className="mx-auto max-w-xs sm:max-w-xl">
             So each week, I will calculate my average weight for the week and
             make sure it is in what I call the "green zone", shown below:
@@ -327,7 +327,7 @@ export function Calculator() {
             </div>
           </div>
         </div>
-        <p className="mx-auto max-w-xs sm:max-w-xl">
+        <p className="mx-auto mt-6 max-w-xs sm:max-w-xl">
           If I keep an eye on that "green zone" and adjust the calorie
           recommendations as needed to stay within it, I will reach my goal and
           feel good knowing that I did so in a healthy way.
