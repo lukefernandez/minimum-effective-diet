@@ -157,7 +157,7 @@ export function Calculator() {
                     <a
                       href="#footnote1"
                       id="ref1"
-                      className="font-bold text-blue-500"
+                      className="font-semibold text-blue-500"
                     >
                       <sup>1</sup>
                     </a>
@@ -171,7 +171,7 @@ export function Calculator() {
                     <a
                       href="#footnote1"
                       id="ref1"
-                      className="font-bold text-blue-500"
+                      className="font-semibold text-blue-500"
                     >
                       <sup>1</sup>
                     </a>
@@ -207,7 +207,7 @@ export function Calculator() {
           </p>
           <div className="mx-auto mt-3 flex max-w-xs justify-between gap-3 leading-tight sm:max-w-xl sm:gap-6">
             <div className="min-w-0">
-              <p className="whitespace-nowrap text-xl font-medium tabular-nums tracking-tight">
+              <p className="whitespace-nowrap text-xl tabular-nums tracking-tight">
                 {plan?.finalWeight.toFixed(1)}
                 <span className="ml-1 text-lg font-normal text-zinc-500">
                   lb
@@ -217,7 +217,7 @@ export function Calculator() {
             </div>
             <div className="w-px self-stretch bg-zinc-200" />
             <div className="min-w-0">
-              <p className="whitespace-nowrap text-xl font-medium tabular-nums tracking-tight">
+              <p className="whitespace-nowrap text-xl tabular-nums tracking-tight">
                 {plan?.weeklyChange.toFixed(2)}
                 <span className="ml-1 text-lg font-normal text-zinc-500">
                   lb
@@ -229,7 +229,7 @@ export function Calculator() {
             </div>
             <div className="w-px self-stretch bg-zinc-200" />
             <div className="min-w-0">
-              <p className="whitespace-nowrap text-xl font-medium tabular-nums tracking-tight">
+              <p className="whitespace-nowrap text-xl tabular-nums tracking-tight">
                 {plan?.totalChange.toFixed(1)}
                 <span className="ml-1 text-lg font-normal text-zinc-500">
                   lb
@@ -248,17 +248,17 @@ export function Calculator() {
             want to eat approximately the following each day, composed of as
             many healthy foods as possible:
           </p>
-          <div className="mx-auto mt-3 max-w-xs overflow-x-auto leading-normal sm:max-w-xl">
+          <div className="mx-auto mt-2 max-w-xs overflow-x-auto leading-normal sm:max-w-xl">
             <table className="w-full border-collapse text-base">
               <thead>
                 <tr>
-                  <th className="border-b border-zinc-200 pb-2 text-left text-sm font-medium text-zinc-500 sm:text-base">
+                  <th className="border-b border-zinc-200 pb-2 text-left text-sm font-medium text-zinc-600 sm:text-base">
                     Day
                   </th>
                   {["Calories", "Protein", "Carbs", "Fat"].map((heading) => (
                     <th
                       key={heading}
-                      className="border-b border-zinc-200 pb-2 pl-2 text-right text-sm font-medium text-zinc-500 sm:pl-3 sm:text-base"
+                      className="border-b border-zinc-200 pb-2 pl-2 text-right text-sm font-medium text-zinc-600 sm:pl-3 sm:text-base"
                     >
                       {heading}
                     </th>
@@ -280,11 +280,7 @@ export function Calculator() {
                   );
                   return (
                     <tr key={day.label}>
-                      <td
-                        className={
-                          "py-2.5 text-base text-zinc-700 sm:text-lg" + border
-                        }
-                      >
+                      <td className={"py-2.5 text-base sm:text-lg" + border}>
                         {day.label}
                       </td>
                       <td className={numCell}>{formatNumber(day.calories)}</td>
