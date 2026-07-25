@@ -205,37 +205,37 @@ export function Calculator() {
             At the end of the {calculatorState.weeks} weeks, my results will
             look something like this:
           </p>
-          <div className="mx-auto mt-3 flex max-w-xs justify-between leading-tight sm:max-w-xl">
-            <div>
-              <p className="text-xl font-medium tabular-nums tracking-tight">
+          <div className="mx-auto mt-3 flex max-w-xs justify-between gap-3 leading-tight sm:max-w-xl sm:gap-6">
+            <div className="min-w-0">
+              <p className="whitespace-nowrap text-xl font-medium tabular-nums tracking-tight">
                 {plan?.finalWeight.toFixed(1)}
                 <span className="ml-1 text-lg font-normal text-zinc-500">
                   lb
                 </span>
               </p>
-              <p className="mt-1 text-base text-zinc-600">weight</p>
+              <p className="mt-1 text-sm text-zinc-600 sm:text-base">weight</p>
             </div>
             <div className="w-px self-stretch bg-zinc-200" />
-            <div>
-              <p className="text-xl font-medium tabular-nums tracking-tight">
+            <div className="min-w-0">
+              <p className="whitespace-nowrap text-xl font-medium tabular-nums tracking-tight">
                 {plan?.weeklyChange.toFixed(2)}
                 <span className="ml-1 text-lg font-normal text-zinc-500">
                   lb
                 </span>
               </p>
-              <p className="mt-1 text-base text-zinc-600">
+              <p className="mt-1 text-sm text-zinc-600 sm:text-base">
                 {directionConfig.pastResultText} per week
               </p>
             </div>
             <div className="w-px self-stretch bg-zinc-200" />
-            <div>
-              <p className="text-xl font-medium tabular-nums tracking-tight">
+            <div className="min-w-0">
+              <p className="whitespace-nowrap text-xl font-medium tabular-nums tracking-tight">
                 {plan?.totalChange.toFixed(1)}
                 <span className="ml-1 text-lg font-normal text-zinc-500">
                   lb
                 </span>
               </p>
-              <p className="mt-1 text-base text-zinc-600">
+              <p className="mt-1 text-sm text-zinc-600 sm:text-base">
                 total {directionConfig.pastResultText}
               </p>
             </div>
@@ -249,16 +249,16 @@ export function Calculator() {
             many healthy foods as possible:
           </p>
           <div className="mx-auto mt-3 max-w-xs overflow-x-auto leading-normal sm:max-w-xl">
-            <table className="w-full min-w-[20rem] border-collapse text-base">
+            <table className="w-full border-collapse text-base">
               <thead>
                 <tr>
-                  <th className="border-b border-zinc-200 pb-2 text-left text-base font-medium text-zinc-500">
+                  <th className="border-b border-zinc-200 pb-2 text-left text-sm font-medium text-zinc-500 sm:text-base">
                     Day
                   </th>
                   {["Calories", "Protein", "Carbs", "Fat"].map((heading) => (
                     <th
                       key={heading}
-                      className="border-b border-zinc-200 pb-2 pl-3 text-right text-base font-medium text-zinc-500"
+                      className="border-b border-zinc-200 pb-2 pl-2 text-right text-sm font-medium text-zinc-500 sm:pl-3 sm:text-base"
                     >
                       {heading}
                     </th>
@@ -270,16 +270,21 @@ export function Calculator() {
                   const border =
                     index < days.length - 1 ? " border-b border-zinc-100" : "";
                   const numCell =
-                    "py-2.5 pl-3 text-right text-lg tabular-nums" + border;
+                    "whitespace-nowrap py-2.5 pl-2 text-right text-base tabular-nums sm:pl-3 sm:text-lg" +
+                    border;
                   const gram = (
-                    <span className="text-base font-normal text-zinc-500">
+                    <span className="text-sm font-normal text-zinc-500 sm:text-base">
                       {" "}
                       g
                     </span>
                   );
                   return (
                     <tr key={day.label}>
-                      <td className={"py-2.5 text-lg text-zinc-700" + border}>
+                      <td
+                        className={
+                          "py-2.5 text-base text-zinc-700 sm:text-lg" + border
+                        }
+                      >
                         {day.label}
                       </td>
                       <td className={numCell}>{formatNumber(day.calories)}</td>
