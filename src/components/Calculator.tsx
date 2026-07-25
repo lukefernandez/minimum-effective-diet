@@ -141,7 +141,7 @@ export function Calculator() {
                 onClick={() => {
                   setShowExplanation((prev) => !prev);
                 }}
-                className="font-base h-0 cursor-pointer text-blue-500 underline decoration-dotted underline-offset-[5px]"
+                className="cursor-pointer leading-normal text-blue-500 underline decoration-dotted underline-offset-[5px]"
               >
                 Why these options?
               </button>
@@ -375,7 +375,7 @@ export function Calculator() {
             <sup>1</sup> Percentage ranges, week ranges, and calorie estimates
             are pulled from{" "}
             <a
-              className="font-base text-blue-500 underline decoration-dotted underline-offset-[5px]"
+              className="text-blue-500 underline decoration-dotted underline-offset-[5px]"
               target="_blank"
               rel="noopener noreferrer"
               href="https://rpstrength.com/products/rp-diet-book-v2"
