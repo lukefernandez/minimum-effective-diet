@@ -57,7 +57,7 @@ export function Calculator() {
   const plan = useMemo(() => computePlan(calculatorState), [calculatorState]);
 
   return (
-    <div className="mb-4 text-lg leading-[3.5rem]">
+    <div className="mt-6 text-lg leading-[3.5rem] sm:mt-8">
       <form onSubmit={(event) => event.preventDefault()}>
         <div className="mx-auto max-w-xs xs:max-w-md sm:max-w-xl">
           <p>
@@ -147,7 +147,7 @@ export function Calculator() {
               </button>
             </p>
             {showExplanation && (
-              <p className="mx-auto mb-12 mt-4 rounded-lg bg-zinc-100 p-4 leading-loose shadow">
+              <p className="mx-auto mt-4 rounded-lg bg-zinc-100 px-6 py-4 leading-loose shadow">
                 {calculatorState.direction === "gain" ? (
                   <span>
                     While gaining, I will likely want to gain more muscle than
@@ -179,8 +179,8 @@ export function Calculator() {
                 )}
               </p>
             )}
-            <hr className="my-8" />
-            <p>
+            <hr className="mt-6" />
+            <p className="mt-6">
               Following this plan, my weight will roughly trend like this, with
               each data point representing my average weight during that
               week:{" "}
@@ -194,14 +194,14 @@ export function Calculator() {
             showWindow={false}
           />
 
-          <div className="mx-auto max-w-xs xs:max-w-md sm:max-w-xl">
+          <div className="mx-auto mt-6 max-w-xs xs:max-w-md sm:max-w-xl">
             <p>
               At the end of the {calculatorState.weeks} weeks, my results will
               look something like this:
             </p>
-            <div className="my-5 flex justify-between leading-tight">
+            <div className="mt-4 flex justify-between leading-tight">
               <div>
-                <p className="text-2xl font-medium tabular-nums tracking-tight">
+                <p className="text-xl font-medium tabular-nums tracking-tight">
                   {plan?.finalWeight.toFixed(1)}
                   <span className="ml-1 text-lg font-normal text-zinc-500">
                     lb
@@ -211,7 +211,7 @@ export function Calculator() {
               </div>
               <div className="w-px self-stretch bg-zinc-200" />
               <div>
-                <p className="text-2xl font-medium tabular-nums tracking-tight">
+                <p className="text-xl font-medium tabular-nums tracking-tight">
                   {plan?.weeklyChange.toFixed(2)}
                   <span className="ml-1 text-lg font-normal text-zinc-500">
                     lb
@@ -223,7 +223,7 @@ export function Calculator() {
               </div>
               <div className="w-px self-stretch bg-zinc-200" />
               <div>
-                <p className="text-2xl font-medium tabular-nums tracking-tight">
+                <p className="text-xl font-medium tabular-nums tracking-tight">
                   {plan?.totalChange.toFixed(1)}
                   <span className="ml-1 text-lg font-normal text-zinc-500">
                     lb
@@ -234,15 +234,14 @@ export function Calculator() {
                 </p>
               </div>
             </div>
-            <hr className="mb-8 mt-10" />
 
-            <p>
+            <p className="mt-8">
               To stay on track with my targeted weight{" "}
               {directionConfig.resultText} and achieve the best physique, I will
               want to eat approximately the following each day, composed of as
               many healthy foods as possible:
             </p>
-            <div className="my-6 overflow-x-auto leading-normal">
+            <div className="mt-6 overflow-x-auto leading-normal">
               <table className="w-full min-w-[20rem] border-collapse text-base">
                 <thead>
                   <tr>
@@ -300,7 +299,6 @@ export function Calculator() {
               </table>
             </div>
 
-            <hr className="mb-8 mt-10" />
             <p>
               But even if I stick to this, my progress will probably not look
               like a perfect straight line. There are just too many variables at
@@ -329,7 +327,7 @@ export function Calculator() {
           </div>
         </div>
         {plan === null && (
-          <p className="mx-auto mb-14 mt-6 max-w-xs rounded-lg bg-zinc-100 p-4 leading-loose shadow xs:max-w-md sm:max-w-xl">
+          <p className="mx-auto mt-6 max-w-xs rounded-lg bg-zinc-100 p-4 leading-loose shadow xs:max-w-md sm:max-w-xl">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="28"
@@ -357,21 +355,19 @@ export function Calculator() {
         )}
       </form>
       {plan !== null && (
-        <div className="mx-auto mt-10 max-w-xs rounded-xl bg-zinc-100 p-10 leading-loose xs:max-w-md sm:max-w-xl">
-          <h2 className="mb-4 text-2xl font-medium">
-            The Minimum Effective Diet Explained
-          </h2>
-          <p className="mb-4">
+        <div className="mx-auto mt-10 max-w-xs rounded-xl bg-zinc-100 px-8 py-6 leading-loose xs:max-w-md sm:max-w-xl">
+          <h2 className="text-2xl">The Minimum Effective Diet Explained</h2>
+          <p className="mt-4">
             The Minimum Effective Diet aims to be a foolproof way for someone to
             get started on a weight gain or weight loss journey they can trust
             to be evidence-based and effective.
           </p>
-          <p className="mb-4">
+          <p className="mt-4">
             It gets its name from the term Minimum Effective Dose and is as
             simple as making four selections, getting started, and adhering.
           </p>
 
-          <p id="footnote1" className="mb-4">
+          <p id="footnote1" className="mt-4">
             <sup>1</sup> Percentage ranges, week ranges, and calorie estimates
             are pulled from{" "}
             <a
@@ -384,7 +380,7 @@ export function Calculator() {
             </a>
             .
           </p>
-          <p>
+          <p className="mt-4">
             DISCLAIMER — Though The Minimum Effective Diet is based on work from
             licensed professionals, I am not a licensed medical or nutritional
             professional. At the end of the day, it is up to you to make the

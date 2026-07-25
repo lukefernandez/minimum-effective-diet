@@ -28,15 +28,17 @@ function CustomTooltip({
 
   return (
     <div className="w-60 rounded-lg bg-white p-3 shadow ring-1 ring-zinc-300">
-      <p className="mb-1 text-sm font-semibold text-zinc-900">Week {label}</p>
-      {payload
-        .filter((item) => item.name !== "window")
-        .map((val) => (
-          <p key={val.name} className="flex justify-between text-sm">
-            <span className="text-zinc-600">{val.name}:</span>
-            <span className="text-zinc-600">{val.value?.toFixed(1)}</span>
-          </p>
-        ))}
+      <p className="text-sm font-semibold text-zinc-900">Week {label}</p>
+      <div className="mt-1">
+        {payload
+          .filter((item) => item.name !== "window")
+          .map((val) => (
+            <p key={val.name} className="flex justify-between text-sm">
+              <span className="text-zinc-600">{val.name}:</span>
+              <span className="text-zinc-600">{val.value?.toFixed(1)}</span>
+            </p>
+          ))}
+      </div>
     </div>
   );
 }
@@ -82,7 +84,7 @@ export function ProjectionChart({ projections, units, showWindow }: Props) {
   }
 
   return (
-    <div className="mx-auto mb-6 flex max-w-sm items-center justify-center text-lg xs:max-w-md sm:max-w-[52rem]">
+    <div className="mx-auto flex max-w-sm items-center justify-center text-lg xs:max-w-md sm:max-w-[52rem]">
       <div className="h-[400px] w-full sm:mr-[8%] sm:h-[480px]">
         <ResponsiveContainer width="100%" height="100%">
           <ComposedChart
