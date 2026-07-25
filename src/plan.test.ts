@@ -159,15 +159,15 @@ describe("computePlan", () => {
 });
 
 describe("full input space invariants", () => {
-  const directions: { direction: PlanDirection; pcts: number[] }[] = [
-    { direction: "gain", pcts: [0.3, 0.35, 0.375, 0.4, 0.45] },
-    { direction: "lose", pcts: [0.6, 0.7, 0.75, 0.8, 0.9] },
+  const directions: { direction: PlanDirection; percentages: number[] }[] = [
+    { direction: "gain", percentages: [0.3, 0.35, 0.375, 0.4, 0.45] },
+    { direction: "lose", percentages: [0.6, 0.7, 0.75, 0.8, 0.9] },
   ];
 
   it("never prescribes negative macros and always sums to calories", () => {
-    for (const { direction, pcts } of directions) {
+    for (const { direction, percentages } of directions) {
       for (let startWeight = 100; startWeight <= 300; startWeight++) {
-        for (const percentageChange of pcts) {
+        for (const percentageChange of percentages) {
           const plan = computePlan({
             startWeight,
             direction,

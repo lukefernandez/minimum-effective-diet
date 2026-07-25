@@ -13,7 +13,7 @@ describe("Selector", () => {
         name="weeks"
         options={[6, 7, 8]}
         value={7}
-        handleChange={(val) => received.push(val)}
+        onChange={(val) => received.push(val)}
       />,
     );
 
@@ -32,7 +32,7 @@ describe("Selector", () => {
         name="direction"
         options={["gain", "lose"]}
         value={"lose"}
-        handleChange={(val) => received.push(val)}
+        onChange={(val) => received.push(val)}
       />,
     );
 
@@ -49,7 +49,7 @@ describe("Selector", () => {
         name="weeks"
         options={[6, 7, 8]}
         value={6}
-        handleChange={() => {}}
+        onChange={() => {}}
       />,
     );
 
@@ -67,7 +67,7 @@ describe("Selector", () => {
         name="weeks"
         options={[6, 7, 8]}
         value={99}
-        handleChange={() => {}}
+        onChange={() => {}}
       />,
     );
 

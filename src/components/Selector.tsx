@@ -4,8 +4,7 @@ type Props<T extends string | number> = {
   name: string;
   options: T[];
   value: T;
-  handleChange: (value: T) => void;
-  label?: string;
+  onChange: (value: T) => void;
 };
 
 /*
@@ -17,16 +16,16 @@ export function Selector<T extends string | number>({
   name,
   options,
   value,
-  handleChange,
+  onChange,
 }: Props<T>) {
-  const onChange = useCallback(
+  const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
       const option = options[Number(e.target.value)];
       if (option !== undefined) {
-        handleChange(option);
+        onChange(option);
       }
     },
-    [options, handleChange],
+    [options, onChange],
   );
 
   return (
@@ -34,7 +33,7 @@ export function Selector<T extends string | number>({
       id={name}
       name={name}
       value={options.indexOf(value)}
-      onChange={onChange}
+      onChange={handleChange}
       className="mx-2 rounded-lg border-0 bg-transparent text-zinc-900 ring-1 ring-inset ring-zinc-400 focus:ring-2 focus:ring-inset focus:ring-zinc-600 sm:text-base"
     >
       {options.map((opt, index) => (

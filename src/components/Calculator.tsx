@@ -7,10 +7,10 @@ import {
   PlanInputs,
   SUPPORTED_WEIGHT_RANGE,
 } from "../plan";
-import { Projection } from "./Projection";
+import { ProjectionChart } from "./ProjectionChart";
 import { Selector } from "./Selector";
 
-type Direction = {
+type DirectionConfig = {
   resultText: string;
   pastResultText: string;
   minWeeks: number;
@@ -20,7 +20,7 @@ type Direction = {
   selectablePercentages: number[];
 };
 
-const directions: Record<PlanDirection, Direction> = {
+const directionConfigs: Record<PlanDirection, DirectionConfig> = {
   gain: {
     resultText: "gain",
     pastResultText: "gained",
@@ -41,17 +41,18 @@ const directions: Record<PlanDirection, Direction> = {
   },
 };
 
-const Defaults: PlanInputs = {
+const defaultInputs: PlanInputs = {
   startWeight: 140,
   direction: "gain",
-  weeks: directions.gain.defaultWeeks,
-  percentageChange: directions.gain.defaultPercentage,
+  weeks: directionConfigs.gain.defaultWeeks,
+  percentageChange: directionConfigs.gain.defaultPercentage,
 };
 
 export function Calculator() {
-  const [calculatorState, setCalculatorState] = useState<PlanInputs>(Defaults);
+  const [calculatorState, setCalculatorState] =
+    useState<PlanInputs>(defaultInputs);
   const [showExplanation, setShowExplanation] = useState<boolean>(false);
-  const direction = directions[calculatorState.direction];
+  const directionConfig = directionConfigs[calculatorState.direction];
 
   const plan = useMemo(() => computePlan(calculatorState), [calculatorState]);
 
@@ -69,7 +70,11 @@ export function Calculator() {
               max={SUPPORTED_WEIGHT_RANGE.max}
               inputMode="numeric"
               pattern="[0-9]*"
-              value={calculatorState.startWeight}
+              value={
+                Number.isNaN(calculatorState.startWeight)
+                  ? ""
+                  : calculatorState.startWeight
+              }
               onChange={(event) =>
                 setCalculatorState((prev) => ({
                   ...prev,
@@ -85,27 +90,28 @@ export function Calculator() {
               I want to
               <Selector
                 name="direction"
-                options={Object.keys(directions) as PlanDirection[]}
+                options={Object.keys(directionConfigs) as PlanDirection[]}
                 value={calculatorState.direction}
-                handleChange={(val) =>
+                onChange={(val) =>
                   setCalculatorState((prev) => ({
                     ...prev,
                     direction: val,
-                    weeks: directions[val].defaultWeeks,
-                    percentageChange: directions[val].defaultPercentage,
+                    weeks: directionConfigs[val].defaultWeeks,
+                    percentageChange: directionConfigs[val].defaultPercentage,
                   }))
                 }
               />
               <span>weight in a healthy, effective way.</span>
             </p>
-            <p></p>
             <p>
-              <span>To do so, I will target a {direction.resultText} of</span>
+              <span>
+                To do so, I will target a {directionConfig.resultText} of
+              </span>
               <Selector
                 name="percentageChange"
-                options={direction.selectablePercentages}
+                options={directionConfig.selectablePercentages}
                 value={calculatorState.percentageChange}
-                handleChange={(val) =>
+                onChange={(val) =>
                   setCalculatorState((prev) => ({
                     ...prev,
                     percentageChange: val,
@@ -116,9 +122,13 @@ export function Calculator() {
               <span> of my starting body weight per week for</span>
               <Selector
                 name="weeks"
-                options={range(direction.minWeeks, direction.maxWeeks, 1)}
+                options={range(
+                  directionConfig.minWeeks,
+                  directionConfig.maxWeeks,
+                  1,
+                )}
                 value={calculatorState.weeks}
-                handleChange={(val) =>
+                onChange={(val) =>
                   setCalculatorState((prev) => ({
                     ...prev,
                     weeks: val,
@@ -127,6 +137,7 @@ export function Calculator() {
               />
               <span>weeks.</span>{" "}
               <button
+                type="button"
                 onClick={() => {
                   setShowExplanation((prev) => !prev);
                 }}
@@ -134,40 +145,40 @@ export function Calculator() {
               >
                 Why these options?
               </button>
-              {showExplanation && (
-                <p className="mx-auto mb-12 mt-4 rounded-lg bg-zinc-100 p-4 leading-loose shadow">
-                  {calculatorState.direction === "gain" ? (
-                    <span>
-                      While gaining, I will likely want to gain more muscle than
-                      fat. The best muscle gain results generally occur when
-                      gaining between 0.25% and 0.5% of body weight per week for
-                      a duration of 6 to 16 weeks.
-                      <a
-                        href="#footnote1"
-                        id="ref1"
-                        className="font-bold text-blue-500"
-                      >
-                        <sup>1</sup>
-                      </a>
-                    </span>
-                  ) : (
-                    <span>
-                      While losing, I will likely want to lose more fat than
-                      muscle. The best fat loss results generally occur when
-                      losing between 0.5% and 1% of body weight per week for a
-                      duration of 6 to 12 weeks.
-                      <a
-                        href="#footnote1"
-                        id="ref1"
-                        className="font-bold text-blue-500"
-                      >
-                        <sup>1</sup>
-                      </a>
-                    </span>
-                  )}
-                </p>
-              )}
             </p>
+            {showExplanation && (
+              <p className="mx-auto mb-12 mt-4 rounded-lg bg-zinc-100 p-4 leading-loose shadow">
+                {calculatorState.direction === "gain" ? (
+                  <span>
+                    While gaining, I will likely want to gain more muscle than
+                    fat. The best muscle gain results generally occur when
+                    gaining between 0.25% and 0.5% of body weight per week for a
+                    duration of 6 to 16 weeks.
+                    <a
+                      href="#footnote1"
+                      id="ref1"
+                      className="font-bold text-blue-500"
+                    >
+                      <sup>1</sup>
+                    </a>
+                  </span>
+                ) : (
+                  <span>
+                    While losing, I will likely want to lose more fat than
+                    muscle. The best fat loss results generally occur when
+                    losing between 0.5% and 1% of body weight per week for a
+                    duration of 6 to 12 weeks.
+                    <a
+                      href="#footnote1"
+                      id="ref1"
+                      className="font-bold text-blue-500"
+                    >
+                      <sup>1</sup>
+                    </a>
+                  </span>
+                )}
+              </p>
+            )}
             <hr className="my-8" />
             <p>
               Following this plan, my weight will roughly trend like this, with
@@ -177,8 +188,8 @@ export function Calculator() {
           </div>
         </div>
         <div className={plan !== null ? "visible" : "hidden"}>
-          <Projection
-            weights={plan?.projections ?? []}
+          <ProjectionChart
+            projections={plan?.projections ?? []}
             units="pounds"
             showWindow={false}
           />
@@ -207,7 +218,7 @@ export function Calculator() {
                   </span>
                 </p>
                 <p className="mt-1 text-base text-zinc-600">
-                  {direction.pastResultText} per week
+                  {directionConfig.pastResultText} per week
                 </p>
               </div>
               <div className="w-px self-stretch bg-zinc-200" />
@@ -219,17 +230,17 @@ export function Calculator() {
                   </span>
                 </p>
                 <p className="mt-1 text-base text-zinc-600">
-                  total {direction.pastResultText}
+                  total {directionConfig.pastResultText}
                 </p>
               </div>
             </div>
             <hr className="mb-8 mt-10" />
 
             <p>
-              To stay on track with my targeted weight {direction.resultText}{" "}
-              and achieve the best physique, I will want to eat approximately
-              the following each day, composed of as many healthy foods as
-              possible:
+              To stay on track with my targeted weight{" "}
+              {directionConfig.resultText} and achieve the best physique, I will
+              want to eat approximately the following each day, composed of as
+              many healthy foods as possible:
             </p>
             <div className="my-6 overflow-x-auto leading-normal">
               <table className="w-full min-w-[20rem] border-collapse text-base">
@@ -304,8 +315,8 @@ export function Calculator() {
               make sure it is in what I call the "green zone", shown below:
             </p>
           </div>
-          <Projection
-            weights={plan?.projections ?? []}
+          <ProjectionChart
+            projections={plan?.projections ?? []}
             units="pounds"
             showWindow={true}
           />
@@ -326,9 +337,9 @@ export function Calculator() {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className="inline-block pb-1"
             >
               <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import {
   Line,
   XAxis,
@@ -13,17 +13,17 @@ import {
 
 import { WeekProjection } from "../plan";
 
-interface Props {
-  weights: WeekProjection[];
+type Props = {
+  projections: WeekProjection[];
   units: string;
   showWindow: boolean;
-}
+};
 
-const CustomTooltip: React.FC<TooltipProps<number, string>> = ({
+function CustomTooltip({
   active,
   payload,
   label,
-}) => {
+}: TooltipProps<number, string>) {
   if (!active || !payload || !payload.length) return null;
 
   return (
@@ -39,18 +39,18 @@ const CustomTooltip: React.FC<TooltipProps<number, string>> = ({
         ))}
     </div>
   );
-};
+}
 
-export const Projection: React.FC<Props> = ({ weights, units, showWindow }) => {
+export function ProjectionChart({ projections, units, showWindow }: Props) {
   const [animate, setAnimate] = useState(true);
 
   const chartData = useMemo(
     () =>
-      weights.map((projection) => ({
+      projections.map((projection) => ({
         ...projection,
         window: [projection.minWeight, projection.maxWeight],
       })),
-    [weights],
+    [projections],
   );
 
   useEffect(() => {
@@ -61,22 +61,23 @@ export const Projection: React.FC<Props> = ({ weights, units, showWindow }) => {
   }, [animate]);
 
   const { graphMinWeight, graphMaxWeight, yAxisPadding } = useMemo(() => {
-    if (weights.length === 0)
+    if (projections.length === 0)
       return { graphMinWeight: 0, graphMaxWeight: 0, yAxisPadding: 0 };
 
-    const isGain = weights[0].weight < weights[weights.length - 1].weight;
+    const isGain =
+      projections[0].weight < projections[projections.length - 1].weight;
     const graphMinWeight = isGain
-      ? weights[0].minWeight
-      : weights[weights.length - 1].minWeight;
+      ? projections[0].minWeight
+      : projections[projections.length - 1].minWeight;
     const graphMaxWeight = isGain
-      ? weights[weights.length - 1].maxWeight
-      : weights[0].maxWeight;
+      ? projections[projections.length - 1].maxWeight
+      : projections[0].maxWeight;
     const yAxisPadding = (graphMaxWeight - graphMinWeight) * 0.1;
 
     return { graphMinWeight, graphMaxWeight, yAxisPadding };
-  }, [weights]);
+  }, [projections]);
 
-  if (weights.length === 0) {
+  if (projections.length === 0) {
     return null;
   }
 
@@ -153,4 +154,4 @@ export const Projection: React.FC<Props> = ({ weights, units, showWindow }) => {
       </div>
     </div>
   );
-};
+}
