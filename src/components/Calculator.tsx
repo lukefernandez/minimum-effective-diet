@@ -344,19 +344,19 @@ export function Calculator() {
         </p>
       )}
       {plan !== null && (
-        <div className="mx-auto mt-8 max-w-xs rounded-xl bg-zinc-100 px-8 py-6 leading-loose xs:max-w-md sm:max-w-xl">
+        <div className="mx-auto mt-8 max-w-xs space-y-4 rounded-xl bg-zinc-100 px-8 py-6 leading-loose xs:max-w-md sm:max-w-xl">
           <h2 className="text-2xl">The Minimum Effective Diet Explained</h2>
-          <p className="mt-4">
+          <p>
             The Minimum Effective Diet aims to be a foolproof way for someone to
             get started on a weight gain or weight loss journey they can trust
             to be evidence-based and effective.
           </p>
-          <p className="mt-4">
+          <p>
             It gets its name from the term Minimum Effective Dose and is as
             simple as making four selections, getting started, and adhering.
           </p>
 
-          <p id="footnote1" className="mt-4">
+          <p id="footnote1">
             <sup>1</sup> Percentage ranges, week ranges, and calorie estimates
             are pulled from{" "}
             <a
@@ -369,8 +369,8 @@ export function Calculator() {
             </a>
             .
           </p>
-          <p className="mt-4">
-            DISCLAIMER — Though The Minimum Effective Diet is based on work from
+          <p>
+            DISCLAIMER: Though The Minimum Effective Diet is based on work from
             licensed professionals, I am not a licensed medical or nutritional
             professional. At the end of the day, it is up to you to make the
             final decision about your body and your diet. Use this not as advice
