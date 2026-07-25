@@ -57,7 +57,7 @@ export function Calculator() {
   const plan = useMemo(() => computePlan(calculatorState), [calculatorState]);
 
   return (
-    <div className="mt-5 text-lg leading-[3.5rem]">
+    <div className="mt-7 text-lg leading-[3.5rem]">
       <form onSubmit={(event) => event.preventDefault()}>
         <div className="mx-auto max-w-xs xs:max-w-md sm:max-w-xl">
           <p>
@@ -147,7 +147,7 @@ export function Calculator() {
               </button>
             </p>
             {showExplanation && (
-              <p className="mx-auto mb-10 mt-4 rounded-lg bg-zinc-100 px-6 py-4 leading-loose shadow">
+              <p className="mx-auto mb-11 mt-5 rounded-lg bg-zinc-100 px-6 py-4 leading-loose shadow">
                 {calculatorState.direction === "gain" ? (
                   <span>
                     While gaining, I will likely want to gain more muscle than
@@ -183,7 +183,7 @@ export function Calculator() {
         </div>
       </form>
 
-      <hr className="mx-auto mt-4 max-w-xs sm:max-w-xl" />
+      <hr className="mx-auto mt-5 max-w-xs sm:max-w-xl" />
       <div className={plan !== null ? "visible" : "hidden"}>
         <div className="mt-4">
           <p className="mx-auto max-w-xs sm:max-w-xl">
@@ -200,12 +200,12 @@ export function Calculator() {
             </div>
           </div>
         </div>
-        <div className="mt-6">
+        <div className="mt-9">
           <p className="mx-auto max-w-xs sm:max-w-xl">
             At the end of the {calculatorState.weeks} weeks, my results will
             look something like this:
           </p>
-          <div className="mx-auto mt-4 flex max-w-xs justify-between leading-tight sm:max-w-xl">
+          <div className="mx-auto mt-3 flex max-w-xs justify-between leading-tight sm:max-w-xl">
             <div>
               <p className="text-xl font-medium tabular-nums tracking-tight">
                 {plan?.finalWeight.toFixed(1)}
@@ -241,14 +241,14 @@ export function Calculator() {
             </div>
           </div>
         </div>
-        <div className="mt-6">
+        <div className="mt-8">
           <p className="mx-auto max-w-xs sm:max-w-xl">
             To stay on track with my targeted weight{" "}
             {directionConfig.resultText} and achieve the best physique, I will
             want to eat approximately the following each day, composed of as
             many healthy foods as possible:
           </p>
-          <div className="mx-auto mt-4 max-w-xs overflow-x-auto leading-normal sm:max-w-xl">
+          <div className="mx-auto mt-3 max-w-xs overflow-x-auto leading-normal sm:max-w-xl">
             <table className="w-full min-w-[20rem] border-collapse text-base">
               <thead>
                 <tr>
@@ -302,7 +302,7 @@ export function Calculator() {
             </table>
           </div>
         </div>
-        <div className="mt-4">
+        <div className="mt-5">
           <p className="mx-auto max-w-xs sm:max-w-xl">
             But even if I stick to this, my progress will probably not look like
             a perfect straight line. There are just too many variables at play.
@@ -327,7 +327,7 @@ export function Calculator() {
             </div>
           </div>
         </div>
-        <p className="mx-auto mt-6 max-w-xs sm:max-w-xl">
+        <p className="mx-auto mt-9 max-w-xs sm:max-w-xl">
           If I keep an eye on that "green zone" and adjust the calorie
           recommendations as needed to stay within it, I will reach my goal and
           feel good knowing that I did so in a healthy way.
@@ -361,7 +361,7 @@ export function Calculator() {
         </p>
       )}
       {plan !== null && (
-        <div className="mx-auto mt-8 max-w-xs space-y-4 rounded-xl bg-zinc-100 px-8 py-6 leading-loose xs:max-w-md sm:max-w-xl">
+        <div className="mx-auto mt-10 max-w-xs space-y-4 rounded-xl bg-zinc-100 px-8 py-6 leading-loose xs:max-w-md sm:max-w-xl">
           <h2 className="text-2xl">The Minimum Effective Diet Explained</h2>
           <p>
             The Minimum Effective Diet aims to be a foolproof way for someone to
