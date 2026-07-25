@@ -183,7 +183,8 @@ export function Calculator() {
         </div>
       </form>
 
-      <div className={plan !== null ? "visible mt-6 space-y-6" : "hidden"}>
+      <hr className="mx-auto mt-6 max-w-xs sm:max-w-xl" />
+      <div className={plan !== null ? "visible mt-6 space-y-8" : "hidden"}>
         <div>
           <p className="mx-auto max-w-xs sm:max-w-xl">
             Following this plan, my weight will roughly trend like this, with
@@ -199,116 +200,131 @@ export function Calculator() {
             </div>
           </div>
         </div>
-        <p className="mx-auto max-w-xs sm:max-w-xl">
-          At the end of the {calculatorState.weeks} weeks, my results will look
-          something like this:
-        </p>
-        <div className="mx-auto mt-4 flex max-w-xs justify-between leading-tight sm:max-w-xl">
-          <div>
-            <p className="text-xl font-medium tabular-nums tracking-tight">
-              {plan?.finalWeight.toFixed(1)}
-              <span className="ml-1 text-lg font-normal text-zinc-500">lb</span>
-            </p>
-            <p className="mt-1 text-base text-zinc-600">weight</p>
-          </div>
-          <div className="w-px self-stretch bg-zinc-200" />
-          <div>
-            <p className="text-xl font-medium tabular-nums tracking-tight">
-              {plan?.weeklyChange.toFixed(2)}
-              <span className="ml-1 text-lg font-normal text-zinc-500">lb</span>
-            </p>
-            <p className="mt-1 text-base text-zinc-600">
-              {directionConfig.pastResultText} per week
-            </p>
-          </div>
-          <div className="w-px self-stretch bg-zinc-200" />
-          <div>
-            <p className="text-xl font-medium tabular-nums tracking-tight">
-              {plan?.totalChange.toFixed(1)}
-              <span className="ml-1 text-lg font-normal text-zinc-500">lb</span>
-            </p>
-            <p className="mt-1 text-base text-zinc-600">
-              total {directionConfig.pastResultText}
-            </p>
+        <div>
+          <p className="mx-auto max-w-xs sm:max-w-xl">
+            At the end of the {calculatorState.weeks} weeks, my results will
+            look something like this:
+          </p>
+          <div className="mx-auto mt-4 flex max-w-xs justify-between leading-tight sm:max-w-xl">
+            <div>
+              <p className="text-xl font-medium tabular-nums tracking-tight">
+                {plan?.finalWeight.toFixed(1)}
+                <span className="ml-1 text-lg font-normal text-zinc-500">
+                  lb
+                </span>
+              </p>
+              <p className="mt-1 text-base text-zinc-600">weight</p>
+            </div>
+            <div className="w-px self-stretch bg-zinc-200" />
+            <div>
+              <p className="text-xl font-medium tabular-nums tracking-tight">
+                {plan?.weeklyChange.toFixed(2)}
+                <span className="ml-1 text-lg font-normal text-zinc-500">
+                  lb
+                </span>
+              </p>
+              <p className="mt-1 text-base text-zinc-600">
+                {directionConfig.pastResultText} per week
+              </p>
+            </div>
+            <div className="w-px self-stretch bg-zinc-200" />
+            <div>
+              <p className="text-xl font-medium tabular-nums tracking-tight">
+                {plan?.totalChange.toFixed(1)}
+                <span className="ml-1 text-lg font-normal text-zinc-500">
+                  lb
+                </span>
+              </p>
+              <p className="mt-1 text-base text-zinc-600">
+                total {directionConfig.pastResultText}
+              </p>
+            </div>
           </div>
         </div>
-        <p className="mx-auto max-w-xs sm:max-w-xl">
-          To stay on track with my targeted weight {directionConfig.resultText}{" "}
-          and achieve the best physique, I will want to eat approximately the
-          following each day, composed of as many healthy foods as possible:
-        </p>
-        <div className="mx-auto max-w-xs overflow-x-auto leading-normal sm:max-w-xl">
-          <table className="w-full min-w-[20rem] border-collapse text-base">
-            <thead>
-              <tr>
-                <th className="border-b border-zinc-200 pb-2 text-left text-base font-medium text-zinc-500">
-                  Day
-                </th>
-                {["Calories", "Protein", "Carbs", "Fat"].map((heading) => (
-                  <th
-                    key={heading}
-                    className="border-b border-zinc-200 pb-2 pl-3 text-right text-base font-medium text-zinc-500"
-                  >
-                    {heading}
+        <div>
+          <p className="mx-auto max-w-xs sm:max-w-xl">
+            To stay on track with my targeted weight{" "}
+            {directionConfig.resultText} and achieve the best physique, I will
+            want to eat approximately the following each day, composed of as
+            many healthy foods as possible:
+          </p>
+          <div className="mx-auto mt-4 max-w-xs overflow-x-auto leading-normal sm:max-w-xl">
+            <table className="w-full min-w-[20rem] border-collapse text-base">
+              <thead>
+                <tr>
+                  <th className="border-b border-zinc-200 pb-2 text-left text-base font-medium text-zinc-500">
+                    Day
                   </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {plan?.dayPlans.map((day, index, days) => {
-                const border =
-                  index < days.length - 1 ? " border-b border-zinc-100" : "";
-                const numCell =
-                  "py-2.5 pl-3 text-right text-lg tabular-nums" + border;
-                const gram = (
-                  <span className="text-base font-normal text-zinc-500">
-                    {" "}
-                    g
-                  </span>
-                );
-                return (
-                  <tr key={day.label}>
-                    <td className={"py-2.5 text-lg text-zinc-700" + border}>
-                      {day.label}
-                    </td>
-                    <td className={numCell}>{formatNumber(day.calories)}</td>
-                    <td className={numCell}>
-                      {formatNumber(day.protein)}
-                      {gram}
-                    </td>
-                    <td className={numCell}>
-                      {formatNumber(day.carbs)}
-                      {gram}
-                    </td>
-                    <td className={numCell}>
-                      {formatNumber(day.fat)}
-                      {gram}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+                  {["Calories", "Protein", "Carbs", "Fat"].map((heading) => (
+                    <th
+                      key={heading}
+                      className="border-b border-zinc-200 pb-2 pl-3 text-right text-base font-medium text-zinc-500"
+                    >
+                      {heading}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {plan?.dayPlans.map((day, index, days) => {
+                  const border =
+                    index < days.length - 1 ? " border-b border-zinc-100" : "";
+                  const numCell =
+                    "py-2.5 pl-3 text-right text-lg tabular-nums" + border;
+                  const gram = (
+                    <span className="text-base font-normal text-zinc-500">
+                      {" "}
+                      g
+                    </span>
+                  );
+                  return (
+                    <tr key={day.label}>
+                      <td className={"py-2.5 text-lg text-zinc-700" + border}>
+                        {day.label}
+                      </td>
+                      <td className={numCell}>{formatNumber(day.calories)}</td>
+                      <td className={numCell}>
+                        {formatNumber(day.protein)}
+                        {gram}
+                      </td>
+                      <td className={numCell}>
+                        {formatNumber(day.carbs)}
+                        {gram}
+                      </td>
+                      <td className={numCell}>
+                        {formatNumber(day.fat)}
+                        {gram}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
-        <p className="mx-auto max-w-xs sm:max-w-xl">
-          But even if I stick to this, my progress will probably not look like a
-          perfect straight line. There are just too many variables at play.
-        </p>
-        <p className="mx-auto max-w-xs sm:max-w-xl">
-          I also acknowledge that dieting too fast can be hard on the body and
-          dieting too slow can diminish the positive benefits.
-        </p>
-        <p className="mx-auto max-w-xs sm:max-w-xl">
-          So each week, I will calculate my average weight for the week and make
-          sure it is in what I call the "green zone", shown below:
-        </p>
-        <div className="mx-auto max-w-sm xs:max-w-md sm:max-w-[52rem]">
-          <div className="h-[400px] sm:mr-[8%] sm:h-[480px]">
-            <ProjectionChart
-              projections={plan?.projections ?? []}
-              units="pounds"
-              showWindow={true}
-            />
+        <div>
+          <p className="mx-auto max-w-xs sm:max-w-xl">
+            But even if I stick to this, my progress will probably not look like
+            a perfect straight line. There are just too many variables at play.
+          </p>
+          <p className="mx-auto max-w-xs sm:max-w-xl">
+            I also acknowledge that dieting too fast can be hard on the body and
+            dieting too slow can diminish the positive benefits.
+          </p>
+        </div>
+        <div>
+          <p className="mx-auto max-w-xs sm:max-w-xl">
+            So each week, I will calculate my average weight for the week and
+            make sure it is in what I call the "green zone", shown below:
+          </p>
+          <div className="mx-auto max-w-sm xs:max-w-md sm:max-w-[52rem]">
+            <div className="h-[400px] sm:mr-[8%] sm:h-[480px]">
+              <ProjectionChart
+                projections={plan?.projections ?? []}
+                units="pounds"
+                showWindow={true}
+              />
+            </div>
           </div>
         </div>
         <p className="mx-auto max-w-xs sm:max-w-xl">
@@ -318,7 +334,7 @@ export function Calculator() {
         </p>
       </div>
       {plan === null && (
-        <p className="mx-auto mt-6 max-w-xs rounded-lg bg-zinc-100 px-6 py-4 leading-loose shadow xs:max-w-md sm:max-w-xl">
+        <p className="mx-auto mt-8 max-w-xs rounded-lg bg-zinc-100 px-6 py-4 leading-loose shadow xs:max-w-md sm:max-w-xl">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="28"
