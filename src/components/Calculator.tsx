@@ -200,7 +200,7 @@ export function Calculator() {
             </div>
           </div>
         </div>
-        <div className="mt-9">
+        <div className="mt-5">
           <p className="mx-auto max-w-xs sm:max-w-xl">
             At the end of the {calculatorState.weeks} weeks, my results will
             look something like this:
@@ -328,7 +328,7 @@ export function Calculator() {
             </div>
           </div>
         </div>
-        <p className="mx-auto mt-9 max-w-xs sm:max-w-xl">
+        <p className="mx-auto mt-5 max-w-xs sm:max-w-xl">
           If I keep an eye on that "green zone" and adjust the calorie
           recommendations as needed to stay within it, I will reach my goal and
           feel good knowing that I did so in a healthy way.
