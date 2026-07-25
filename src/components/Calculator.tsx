@@ -147,7 +147,7 @@ export function Calculator() {
               </button>
             </p>
             {showExplanation && (
-              <p className="mx-auto mt-4 rounded-lg bg-zinc-100 px-6 py-4 leading-loose shadow">
+              <p className="mx-auto mb-10 mt-4 rounded-lg bg-zinc-100 px-6 py-4 leading-loose shadow">
                 {calculatorState.direction === "gain" ? (
                   <span>
                     While gaining, I will likely want to gain more muscle than
@@ -183,19 +183,20 @@ export function Calculator() {
         </div>
       </form>
 
-      <hr className="mx-auto mt-6 max-w-xs sm:max-w-xl" />
       <div className={plan !== null ? "visible mt-6 space-y-6" : "hidden"}>
-        <p className="mx-auto max-w-xs sm:max-w-xl">
-          Following this plan, my weight will roughly trend like this, with each
-          data point representing my average weight during that week:{" "}
-        </p>
-        <div className="mx-auto flex max-w-sm items-center justify-center xs:max-w-md sm:max-w-[52rem]">
-          <div className="h-[400px] w-full sm:mr-[8%] sm:h-[480px]">
-            <ProjectionChart
-              projections={plan?.projections ?? []}
-              units="pounds"
-              showWindow={false}
-            />
+        <div>
+          <p className="mx-auto max-w-xs sm:max-w-xl">
+            Following this plan, my weight will roughly trend like this, with
+            each data point representing my average weight during that week:
+          </p>
+          <div className="mx-auto max-w-sm xs:max-w-md sm:max-w-[52rem]">
+            <div className="h-[400px] sm:mr-[8%] sm:h-[480px]">
+              <ProjectionChart
+                projections={plan?.projections ?? []}
+                units="pounds"
+                showWindow={false}
+              />
+            </div>
           </div>
         </div>
         <p className="mx-auto max-w-xs sm:max-w-xl">
@@ -301,8 +302,8 @@ export function Calculator() {
           So each week, I will calculate my average weight for the week and make
           sure it is in what I call the "green zone", shown below:
         </p>
-        <div className="mx-auto flex max-w-sm items-center justify-center xs:max-w-md sm:max-w-[52rem]">
-          <div className="h-[400px] w-full sm:mr-[8%] sm:h-[480px]">
+        <div className="mx-auto max-w-sm xs:max-w-md sm:max-w-[52rem]">
+          <div className="h-[400px] sm:mr-[8%] sm:h-[480px]">
             <ProjectionChart
               projections={plan?.projections ?? []}
               units="pounds"
