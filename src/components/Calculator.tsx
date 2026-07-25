@@ -147,7 +147,7 @@ export function Calculator() {
               </button>
             </p>
             {showExplanation && (
-              <p className="mx-auto mb-11 mt-5 rounded-lg bg-zinc-100 px-6 py-4 leading-loose shadow">
+              <p className="mx-auto mb-11 mt-5 rounded-lg bg-zinc-100 px-6 py-4 leading-loose shadow-sm shadow-zinc-200">
                 {calculatorState.direction === "gain" ? (
                   <span>
                     While gaining, I will likely want to gain more muscle than
@@ -335,7 +335,7 @@ export function Calculator() {
         </p>
       </div>
       {plan === null && (
-        <p className="mx-auto mt-8 max-w-xs rounded-lg bg-zinc-100 px-6 py-4 leading-loose shadow xs:max-w-md sm:max-w-xl">
+        <p className="mx-auto mt-8 max-w-xs rounded-lg bg-zinc-100 px-6 py-4 leading-loose shadow-sm shadow-zinc-200 xs:max-w-md sm:max-w-xl">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="28"
@@ -362,7 +362,7 @@ export function Calculator() {
         </p>
       )}
       {plan !== null && (
-        <div className="mx-auto mt-10 max-w-xs space-y-4 rounded-xl bg-zinc-100 px-8 py-6 leading-loose xs:max-w-md sm:max-w-xl">
+        <div className="mx-auto mt-10 max-w-xs space-y-4 rounded-xl bg-zinc-100 px-8 py-6 leading-loose shadow-sm shadow-zinc-200 xs:max-w-md sm:max-w-xl">
           <h2 className="text-2xl">The Minimum Effective Diet Explained</h2>
           <p>
             The Minimum Effective Diet aims to be a foolproof way for someone to
