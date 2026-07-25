@@ -15,3 +15,7 @@ Fill in current weight, direction, target weekly rate, and duration, and the app
 Percentage ranges, week ranges, and calorie estimates are from
 [The Renaissance Diet 2.0](https://rpstrength.com/products/rp-diet-book-v2)
 (unaffiliated). Not medical advice — see the disclaimer in the app.
+
+## License
+
+[MIT](LICENSE)
