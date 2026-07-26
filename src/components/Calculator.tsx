@@ -303,16 +303,14 @@ export function Calculator() {
             </table>
           </div>
         </div>
-        <div className="mt-5">
-          <p className="mx-auto max-w-xs sm:max-w-xl">
-            But even if I stick to this, my progress will probably not look like
-            a perfect straight line. There are just too many variables at play.
-          </p>
-          <p className="mx-auto max-w-xs sm:max-w-xl">
-            I also acknowledge that dieting too fast can be hard on the body and
-            dieting too slow can diminish the positive benefits.
-          </p>
-        </div>
+        <p className="mx-auto mt-5 max-w-xs sm:max-w-xl">
+          But even if I stick to this, my progress will probably not look like a
+          perfect straight line. There are just too many variables at play.
+        </p>
+        <p className="mx-auto mt-4 max-w-xs sm:max-w-xl">
+          I also acknowledge that dieting too fast can be hard on the body and
+          dieting too slow can diminish the positive benefits.
+        </p>
         <div className="mt-4">
           <p className="mx-auto max-w-xs sm:max-w-xl">
             So each week, I will calculate my average weight for the week and
