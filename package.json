@@ -9,7 +9,8 @@
     "format": "oxfmt",
     "format:check": "oxfmt --check",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "typecheck": "tsc -b"
   },
   "dependencies": {
     "posthog-js": "1.404.0",
