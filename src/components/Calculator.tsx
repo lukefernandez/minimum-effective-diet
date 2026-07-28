@@ -305,7 +305,7 @@ export function Calculator() {
         </div>
         <p className="mx-auto mt-5 max-w-xs sm:max-w-xl">
           But even if I stick to this, my progress will probably not look like a
-          perfect straight line. There are just too many variables at play.
+          perfect straight line. There are too many variables at play.
         </p>
         <p className="mx-auto mt-4 max-w-xs sm:max-w-xl">
           I also acknowledge that dieting too fast can be hard on the body and
@@ -314,7 +314,7 @@ export function Calculator() {
         <div className="mt-4">
           <p className="mx-auto max-w-xs sm:max-w-xl">
             So each week, I will calculate my average weight for the week and
-            make sure it is in what I call the "green zone", shown below:
+            make sure it is within the "green zone" below:
           </p>
           <div className="mx-auto max-w-sm xs:max-w-md sm:max-w-[52rem]">
             <div className="h-[400px] sm:mr-[8%] sm:h-[480px]">
@@ -388,9 +388,9 @@ export function Calculator() {
           <p>
             DISCLAIMER: Though The Minimum Effective Diet is based on work from
             licensed professionals, I am not a licensed medical or nutritional
-            professional. At the end of the day, it is up to you to make the
-            final decision about your body and your diet. Use this not as advice
-            but as a tool in your toolkit.
+            professional. It is up to you to make the final decision about your
+            body and your diet. Use this not as advice but as a tool in your
+            toolkit.
           </p>
         </div>
       )}
