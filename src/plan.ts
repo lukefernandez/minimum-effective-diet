@@ -3,7 +3,6 @@
  * rate, and duration — go in; the complete plan comes out: projected weekly
  * weights with their healthy-rate window (the "green zone"), the outcome
  * numbers, and per-day calorie/macro targets.
- *
  */
 
 export type PlanDirection = "gain" | "lose";

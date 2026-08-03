@@ -4,7 +4,8 @@
 
 /*
  * Self-hosted Inter (variable font, weight axis 100–900), preloaded in
- * index.html to prevent layout shift.  */
+ * index.html to prevent layout shift.
+ */
 @font-face {
   font-family: "Inter";
   font-style: normal;
