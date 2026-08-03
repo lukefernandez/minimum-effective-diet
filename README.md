@@ -4,6 +4,8 @@ Make four simple choices and get an evidence-based diet plan in return.
 
 ![A projected weight curve and its green zone](public/og.png)
 
+Live at [diet.lukefernandez.io](https://diet.lukefernandez.io).
+
 ## Overview
 
 The Minimum Effective Diet aims to be a foolproof way for someone to get started on a weight gain or weight loss journey they can trust to be evidence-based, effective, and safe.
